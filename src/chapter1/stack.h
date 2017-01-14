@@ -1,3 +1,5 @@
+#ifndef __CHAPTER1_STACK_H
+#define __CHAPTER1_STACK_H
 #include "iterable.h"
 
 /*
@@ -11,16 +13,48 @@ class Bag<T> : public Iterable<T> {
 
 */
 template <class T>
-class FixedCapcityStackOfStrings{
+class FixedCapacityStack{
 public:
-    FixedCapcityStackOfStrings(int cap);
-    void push(T &item);
+    FixedCapacityStack(int cap);
+    void push(T item);
     T pop();
     bool isEmpty();
     int size();
-    ~FixedCapcityStackOfStrings();
+    ~FixedCapacityStack();
 private:
     T *a;
     int N;
 
 };
+
+template <class T>
+FixedCapacityStack<T>::FixedCapacityStack(int cap) {
+    a = new T[cap];
+}
+
+template <class T>
+bool FixedCapacityStack<T>::isEmpty() {
+    return N==0;
+}
+
+template <class T>
+void FixedCapacityStack<T>::push(T item) {
+    a[N++] = item;
+}
+
+template <class T>
+int FixedCapacityStack<T>::size() {
+    return N;
+}
+
+template <class T>
+T FixedCapacityStack<T>::pop() {
+    return a[--N];
+}
+
+
+template <class T>
+FixedCapacityStack<T>::~FixedCapacityStack() {
+    delete [] a;
+}
+#endif

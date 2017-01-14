@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    FixedCapacityStack<String> *s =  new FixedCapacityStack(100);
+    FixedCapacityStack<string> *s =  new FixedCapacityStack<string>(100);
     string tmpString;
     while(cin>>tmpString) {
         if(tmpString != "-") {
