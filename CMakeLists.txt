@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 2.8)
 project (algorithm)
 
+set(CMAKE_CXX_FLAGS_DEBUG "-g3")
+
 MACRO(SUBDIRLIST result curdir)
   FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
   SET(dirlist "")
@@ -22,6 +24,6 @@ FOREACH(execsubdir ${EXECSUBDIRS})
         separate_arguments(NAMELIST)
         LIST(GET NAMELIST 0 NAME)
         add_executable(${NAME} ${SRC_LIST})
-        LIST(REMOVE_ITEM SRC_LIST ${mainfile})
+        LIST(REMOVE_ITEM SRC_LIST "${PROJECT_SOURCE_DIR}/test/${execsubdir}/${mainfile}")
     ENDFOREACH()
 ENDFOREACH()
