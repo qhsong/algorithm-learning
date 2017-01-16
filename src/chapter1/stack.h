@@ -161,6 +161,17 @@ public:
         N--;
         return item;
     }
+    ~Stack() {
+        Node *p = first;
+        while(first){
+            p = first->next;
+            delete first;
+            first = p;
+        }
+    }
+    Stack() {
+        Node *first = NULL;
+    }
 private:
     Node *first;
 };
